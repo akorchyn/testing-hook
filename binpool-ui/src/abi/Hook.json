@@ -1,0 +1,38 @@
+[
+  {
+    "type": "error",
+    "name": "HookConfigValidationError",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "HookDeltaExceedsSwapAmount",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "HookPermissionsValidationError",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidHookResponse",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "Wrap__FailedHookCall",
+    "inputs": [
+      {
+        "name": "hook",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "revertReason",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ]
+  }
+]

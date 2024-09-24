@@ -1,0 +1,424 @@
+{
+    "abi": [
+        {
+            "type": "function",
+            "name": "V3_POSITION_MANAGER",
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address",
+                    "internalType": "contract IV3NonfungiblePositionManager"
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "V4_BIN_POSITION_MANAGER",
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address",
+                    "internalType": "contract IPositionManager"
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "V4_CL_POSITION_MANAGER",
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address",
+                    "internalType": "contract IPositionManager"
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "error",
+            "name": "FromAddressIsNotOwner",
+            "inputs": []
+        },
+        {
+            "type": "error",
+            "name": "InsufficientETH",
+            "inputs": []
+        },
+        {
+            "type": "error",
+            "name": "InsufficientToken",
+            "inputs": []
+        },
+        {
+            "type": "error",
+            "name": "InvalidSpender",
+            "inputs": []
+        }
+    ],
+    "bytecode": {
+        "object": "0x",
+        "sourceMap": "",
+        "linkReferences": {}
+    },
+    "deployedBytecode": {
+        "object": "0x",
+        "sourceMap": "",
+        "linkReferences": {}
+    },
+    "methodIdentifiers": {
+        "V3_POSITION_MANAGER()": "817122dc",
+        "V4_BIN_POSITION_MANAGER()": "c54e1b5a",
+        "V4_CL_POSITION_MANAGER()": "83150cac"
+    },
+    "rawMetadata": "{\"compiler\":{\"version\":\"0.8.26+commit.8a97fa7a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"FromAddressIsNotOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InsufficientETH\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InsufficientToken\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidSpender\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"V3_POSITION_MANAGER\",\"outputs\":[{\"internalType\":\"contract IV3NonfungiblePositionManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"V4_BIN_POSITION_MANAGER\",\"outputs\":[{\"internalType\":\"contract IPositionManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"V4_CL_POSITION_MANAGER\",\"outputs\":[{\"internalType\":\"contract IPositionManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Payments through Permit2\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Performs interactions with Permit2 to transfer tokens\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/pancake-v4-universal-router/src/modules/Permit2Payments.sol\":\"Permit2Payments\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/\",\":@openzeppelin/contracts/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/contracts/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-gas-snapshot/=lib/pancake-v4-universal-router/lib/forge-gas-snapshot/src/\",\":forge-std/=lib/forge-std/src/\",\":halmos-cheatcodes/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/\",\":openzeppelin-contracts/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/\",\":pancake-v4-core/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/\",\":pancake-v4-periphery/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/\",\":pancake-v4-universal-router/=lib/pancake-v4-universal-router/\",\":permit2/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/\",\":solmate/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/\"],\"viaIR\":true},\"sources\":{\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xee2337af2dc162a973b4be6d3f7c16f06298259e0af48c5470d2839bfa8a22f4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://30c476b4b2f405c1bb3f0bae15b006d129c80f1bfd9d0f2038160a3bb9745009\",\"dweb:/ipfs/Qmb3VcuDufv6xbHeVgksC4tHpc5gKYVqBEwjEXW72XzSvN\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0xe0e3a2099f2e2ce3579dd35548f613928739642058dfec95b1745f93364ce3de\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://36a3930518e5c4a3c83839aaa136b863af513e6eeee6a3654e8f910f8007f827\",\"dweb:/ipfs/QmcU1b6SYYUMiXJ6jd5HY6sgYjJLdBu4smak1X1FDgkoaA\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0xc859863e3bda7ec3cddf6dafe2ffe91bcbe648d1395b856b839c32ee9617c44c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a9d5417888b873cf2225ed5d50b2a67be97c1504134a2a580512168d587ad82e\",\"dweb:/ipfs/QmNr5fTb2heFW658NZn7dDnofZgFvQTnNxKRJ3wdnR1skX\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/src/tokens/ERC1155.sol\":{\"keccak256\":\"0x00502c7d7671d9dce495858572943999633ac298f20dbb70476280a93720d412\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://62c6b793ba478e87398fa891a36f936ece0df7f9d4b0d0e1e3a853b8b707c181\",\"dweb:/ipfs/QmeRJVA9f1txCw7JRW31JszJH3a1abQjxJszfF5acsh8sk\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/src/tokens/ERC20.sol\":{\"keccak256\":\"0xcdfd8db76b2a3415620e4d18cc5545f3d50de792dbf2c3dd5adb40cbe6f94b10\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://57b3ab70cde374af1cf2c9888636e8de6cf660f087b1c9abd805e9271e19fa35\",\"dweb:/ipfs/QmNrLDBAHYFjpjSd12jerm1AdBkDqEYUUaXgnT854BUZ97\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/src/tokens/ERC721.sol\":{\"keccak256\":\"0x04af19f16f00ba65ae168d6d10da5210dc18da6bcec6974dccf984ba388aa22d\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://098e69f22b67da6927e03203c12ebfda5b0490518f6d9cce7853001ac5ad8403\",\"dweb:/ipfs/QmYyzfurQe88PsVjRNfutV3gS7Vi68f7zgtVZVtLfd4ViK\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/src/utils/SafeTransferLib.sol\":{\"keccak256\":\"0x6ab948013c2c7ca6351e593600425b0ec6df9035320280c678e735bce16e996b\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://2ab977d0eeb2bf458f9798250215c646d2f3b1f90b5a7e2b506fdf3335c0f060\",\"dweb:/ipfs/QmYPRoPhNtBAmCSq7imN1scMVpKNQvMTpoqab3tXUx5Tnv\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/interfaces/IERC20Minimal.sol\":{\"keccak256\":\"0x6528f62516bb1da15f8494231ca3443ac280f354b829bdd97a50e8d4f7f0b876\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://096db736e5677eb7486c9804c42f36093780075ba6a8857a15235f76b7935116\",\"dweb:/ipfs/QmcDQ8uQe65FhEgb8kMbPsQSMJR7JjDmGE1JYgbZbogdiM\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/interfaces/IHooks.sol\":{\"keccak256\":\"0xaa9f76208579867a495be7b5a1e93c967dea22e5a85084c22a291bbce9b99100\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1e70e81cf3e171c5dee8a2fe8b4a5f578cdde63b898917f8c5aa483609fc24d1\",\"dweb:/ipfs/QmZxdEAhAoq3vKChEs91uhGbneKciJMYdQJyCf7HyD3LJg\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/interfaces/IPoolManager.sol\":{\"keccak256\":\"0x11a6771dd056eb1fa46d02259ba75c1b25aa904bb14b5901188d0384fb4f74ca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2e30af527e8a9821ec298de421389333a9d480b94ca1a0faf95bcf1d4bd1b8a4\",\"dweb:/ipfs/Qme1gmr2cMT4hiWBybuu2hys198gqNoZwTrHWmJY1wWuCu\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/libraries/CustomRevert.sol\":{\"keccak256\":\"0x895fc5c378b566a1f885d790ff2fce8757a9ecc46b2abfb62c8fc4eb3041212d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f404e214f03a0d09f226bea1bddf0cacb649658d0e5ac951d558fc609ef85728\",\"dweb:/ipfs/QmXnxSzVznpFf5jUzX9KWWGSng4zosU7sMr2x6U4tCzqMM\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/types/Currency.sol\":{\"keccak256\":\"0xdb67407f05b4dd030771d0c3075a3bc4268bb9537030f0f80f2a387a63d8bb05\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9c4c878a2ecf124d27430df8e6d1cf6de4ab31b7827177745b299fb33ecd3157\",\"dweb:/ipfs/QmaumQvgAvXeA9XfMXzBKvCs2RWkyvxJbA3gpqC23fVGas\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/types/PoolId.sol\":{\"keccak256\":\"0xe8d82d1b6fcbe33b0afe4824bd595ea723168f54bf81d49cf646ce6cc5edd1aa\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://42652cf847cd923b82b5482e022d0d9e81944e220768a8e6530ab71afeed0470\",\"dweb:/ipfs/QmQMQUvAGTyTUzEAi3dr15tTqAWMCVenux8N7FfjGFpHgG\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/types/PoolKey.sol\":{\"keccak256\":\"0x5d86a4fc694d92e39133b4f81ffe5459274c475c1f9ef71c9d3bb91cb9360fd7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://30987025fe9a4845ebc971ce1cc4108fad7f7e4541e8f7a60fbf468faa8565cb\",\"dweb:/ipfs/QmPpHdgqSjaMrJwx6s9yTdfM7mLt1BT1SEjocQ6o9G7iZY\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/interfaces/IAllowanceTransfer.sol\":{\"keccak256\":\"0x78931704a7f1d89ef24244b155863abb751cc3b3818f64303ccb47a396d48dcb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b8d6e198ee29d809564f1c1d7caa11a2c329bb5d051f61210548e546493444d2\",\"dweb:/ipfs/QmVxWftbgETjudymgLdwF77S54DWrp6qB5ooauKXW81cm7\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/interfaces/IEIP712.sol\":{\"keccak256\":\"0xea70db68ce450ad38dfbd490058595441144808eb95272ae9b89e3fbe6456954\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e8fad9ff319665acdc2f1295bb82db3e5b4d52babc0b58f147dbdbb9f322c6e5\",\"dweb:/ipfs/QmTbYJPcux8eJ3qGVYQh6TiwCA2FPu6HXTUg6QFTnX91Ks\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/interfaces/IPermit2.sol\":{\"keccak256\":\"0xaa631cc9f53e699301d94233007110a345e6779011def484e8dd97b8fe0af771\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc0502cf19c9c18f320a3001201e89e350393b75837f6b7971de18b2de06f30d\",\"dweb:/ipfs/QmT9SfhdJ7VJNNrf94g4H5usyi7ShqWGx7Cqsz9jZTjX96\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/interfaces/ISignatureTransfer.sol\":{\"keccak256\":\"0x6805563eaad92471fa1b3591a71d7020a93e59f1a4ac95398daf74927f5bd033\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://48cd13806cb8e82dcc38eb93423a372fbdd3b05364ecebb8bfd9cd29078dd90c\",\"dweb:/ipfs/QmeLyFVrzKRHcm6aaFFBCG5mFESCqWLp1KYT41H8XhzMCp\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/libraries/SafeCast160.sol\":{\"keccak256\":\"0x8a34e2beac108d74f89510c949983212b5f09307a93ee9e17a9d50e93f6bc8e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://828697f9567ce617c5c1c8f76b6bcd250e93aea2c4f3ee188be6dff8443c19e7\",\"dweb:/ipfs/QmafxeSPhUc9gGtNDLAw26oZooC5XNLhDMxHxYhJxL5Nwi\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/interfaces/IPositionManager.sol\":{\"keccak256\":\"0x036c8df255832fd808cf67e0364d763dd48b7f831b25148323908943f4467d9c\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://02c4bcee2b2cb246ab8eb4e0c2e6bd6660709ef58cd41b99725a8deeba828818\",\"dweb:/ipfs/QmYWpbcjqo31QH8qTomM3YPxg7cpHSsurD7e8Ss2goMDSf\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/interfaces/external/IV3NonfungiblePositionManager.sol\":{\"keccak256\":\"0xf14aab91c0b1bd6ce2de55eba92fd43dff8d188300d7c03ae1b33f9d74eab6ef\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://8620e9c8f67b0d2393f1f8004b0997570aeee8ed531ba20770fadbc43cc46892\",\"dweb:/ipfs/QmafHRKfZRUVnaYJ8WJeV9KtSa6cYBRCGtqfjqMoHuoy1A\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/libraries/ActionConstants.sol\":{\"keccak256\":\"0x6228ee215ed1478b1d5b817e8f6e0a8caf81141c9b5c20ee782d6e6869ac2d5c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://27c3d45e119e022f1f7cc01e1c9d001aff3c06a4bc8be01cb43872f65ea1e5c5\",\"dweb:/ipfs/QmUFC6Wp6wGmcBz6mztFyMFXypfdyeSBsCZ6RENq6Ra6jc\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/libraries/BipsLibrary.sol\":{\"keccak256\":\"0xca87f64bacef0eb0c382a4eb6650ac772bb9e5db764dccfc4389e94a04266e9c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c6835010a2fef0d419b90146d4bdd2119ddb7d781d480a64467c000214ecd6f9\",\"dweb:/ipfs/QmccdvjTMjhw6AdjYHj1htYS4qRCnVZAN3YGCwEf2W8TXa\"]},\"lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/pool-cl/interfaces/IERC721Permit.sol\":{\"keccak256\":\"0x492a9c67f08e6b33610af3606149ff1b37eb90ce7c087b3fdcc232483eaa37e0\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://e7386b71b4f1e271c79904c7a35d003f07dfcd15558bb6229e45e081701cb55d\",\"dweb:/ipfs/QmaNDgTiaGFUkUkJJJ4rbWUkzXvveoCufCKedEbjww2whG\"]},\"lib/pancake-v4-universal-router/src/base/RouterImmutables.sol\":{\"keccak256\":\"0x2d51cbb421a4ea5f01186eac16029cb1d340159aa9dc76fab9e570956ed3deaf\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://1eed3cd37f0ed9fd042c966e8ee9c74eb9fc2d170f542ed93dac656261146ff7\",\"dweb:/ipfs/QmVf5KuU4VC1VYt3xbDi4swMwJE3xyKknKhpGWaST5wANS\"]},\"lib/pancake-v4-universal-router/src/interfaces/IWETH9.sol\":{\"keccak256\":\"0x7e207c4f5e35ddfeefc8ef77ccf236a5f5426720d4f89de69b9c597b88480d5e\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://4630a32be58c463118f2689fc11efc50cfca7c26d3a56308a4b8d692c6a8d9e7\",\"dweb:/ipfs/QmPYpRh9snpkyeW812geoe3Fs5Qbtw6huFqFnCnnPmhKUJ\"]},\"lib/pancake-v4-universal-router/src/libraries/Constants.sol\":{\"keccak256\":\"0x1d9aefe59036803a09b3edf7a3f98a3bef105ed4f6c3519f15ced42b4bcc31e8\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://eb958d64ba982216a20debee9d2f5582bb3779f1a013dd714527934c002b3cc8\",\"dweb:/ipfs/QmWynTMNPQirWookZfYchVTjTBk69qFt3ZWCgBx6No2kKc\"]},\"lib/pancake-v4-universal-router/src/modules/Payments.sol\":{\"keccak256\":\"0x105703e72b75352a8e116e482d99ea9e69badadc70560a441c33ce670f7daaf9\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://34c03ac17ac0826abea9709b4d37301921b1275e6d25291a3a357f749755a557\",\"dweb:/ipfs/QmSx6Y7Qk1juUmFJAspYkXA23ayNmtRJmPC9AQy12Ua2ia\"]},\"lib/pancake-v4-universal-router/src/modules/Permit2Payments.sol\":{\"keccak256\":\"0x31272e84824c4f2881f3a4789af731ff647f5cf4534caa0ff05e5aac2b1bd1ba\",\"urls\":[\"bzz-raw://63e977bfada98872b39f705f8f69d4d291986b562841f6bcbc28ef45a8288142\",\"dweb:/ipfs/QmURNq9vU2U6u3jp3JjHCxLqBLercWEAu7hxB5GS1Lro9c\"]}},\"version\":1}",
+    "metadata": {
+        "compiler": {
+            "version": "0.8.26+commit.8a97fa7a"
+        },
+        "language": "Solidity",
+        "output": {
+            "abi": [
+                {
+                    "inputs": [],
+                    "type": "error",
+                    "name": "FromAddressIsNotOwner"
+                },
+                {
+                    "inputs": [],
+                    "type": "error",
+                    "name": "InsufficientETH"
+                },
+                {
+                    "inputs": [],
+                    "type": "error",
+                    "name": "InsufficientToken"
+                },
+                {
+                    "inputs": [],
+                    "type": "error",
+                    "name": "InvalidSpender"
+                },
+                {
+                    "inputs": [],
+                    "stateMutability": "view",
+                    "type": "function",
+                    "name": "V3_POSITION_MANAGER",
+                    "outputs": [
+                        {
+                            "internalType": "contract IV3NonfungiblePositionManager",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ]
+                },
+                {
+                    "inputs": [],
+                    "stateMutability": "view",
+                    "type": "function",
+                    "name": "V4_BIN_POSITION_MANAGER",
+                    "outputs": [
+                        {
+                            "internalType": "contract IPositionManager",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ]
+                },
+                {
+                    "inputs": [],
+                    "stateMutability": "view",
+                    "type": "function",
+                    "name": "V4_CL_POSITION_MANAGER",
+                    "outputs": [
+                        {
+                            "internalType": "contract IPositionManager",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ]
+                }
+            ],
+            "devdoc": {
+                "kind": "dev",
+                "methods": {},
+                "version": 1
+            },
+            "userdoc": {
+                "kind": "user",
+                "methods": {},
+                "version": 1
+            }
+        },
+        "settings": {
+            "remappings": [
+                "@openzeppelin/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/",
+                "@openzeppelin/contracts/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/contracts/",
+                "ds-test/=lib/forge-std/lib/ds-test/src/",
+                "erc4626-tests/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/lib/erc4626-tests/",
+                "forge-gas-snapshot/=lib/pancake-v4-universal-router/lib/forge-gas-snapshot/src/",
+                "forge-std/=lib/forge-std/src/",
+                "halmos-cheatcodes/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/",
+                "openzeppelin-contracts/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/",
+                "pancake-v4-core/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/",
+                "pancake-v4-periphery/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/",
+                "pancake-v4-universal-router/=lib/pancake-v4-universal-router/",
+                "permit2/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/",
+                "solmate/=lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/"
+            ],
+            "optimizer": {
+                "enabled": true,
+                "runs": 200
+            },
+            "metadata": {
+                "bytecodeHash": "ipfs"
+            },
+            "compilationTarget": {
+                "lib/pancake-v4-universal-router/src/modules/Permit2Payments.sol": "Permit2Payments"
+            },
+            "evmVersion": "cancun",
+            "libraries": {},
+            "viaIR": true
+        },
+        "sources": {
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+                "keccak256": "0xee2337af2dc162a973b4be6d3f7c16f06298259e0af48c5470d2839bfa8a22f4",
+                "urls": [
+                    "bzz-raw://30c476b4b2f405c1bb3f0bae15b006d129c80f1bfd9d0f2038160a3bb9745009",
+                    "dweb:/ipfs/Qmb3VcuDufv6xbHeVgksC4tHpc5gKYVqBEwjEXW72XzSvN"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol": {
+                "keccak256": "0xe0e3a2099f2e2ce3579dd35548f613928739642058dfec95b1745f93364ce3de",
+                "urls": [
+                    "bzz-raw://36a3930518e5c4a3c83839aaa136b863af513e6eeee6a3654e8f910f8007f827",
+                    "dweb:/ipfs/QmcU1b6SYYUMiXJ6jd5HY6sgYjJLdBu4smak1X1FDgkoaA"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": {
+                "keccak256": "0xc859863e3bda7ec3cddf6dafe2ffe91bcbe648d1395b856b839c32ee9617c44c",
+                "urls": [
+                    "bzz-raw://a9d5417888b873cf2225ed5d50b2a67be97c1504134a2a580512168d587ad82e",
+                    "dweb:/ipfs/QmNr5fTb2heFW658NZn7dDnofZgFvQTnNxKRJ3wdnR1skX"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/src/tokens/ERC1155.sol": {
+                "keccak256": "0x00502c7d7671d9dce495858572943999633ac298f20dbb70476280a93720d412",
+                "urls": [
+                    "bzz-raw://62c6b793ba478e87398fa891a36f936ece0df7f9d4b0d0e1e3a853b8b707c181",
+                    "dweb:/ipfs/QmeRJVA9f1txCw7JRW31JszJH3a1abQjxJszfF5acsh8sk"
+                ],
+                "license": "AGPL-3.0-only"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/src/tokens/ERC20.sol": {
+                "keccak256": "0xcdfd8db76b2a3415620e4d18cc5545f3d50de792dbf2c3dd5adb40cbe6f94b10",
+                "urls": [
+                    "bzz-raw://57b3ab70cde374af1cf2c9888636e8de6cf660f087b1c9abd805e9271e19fa35",
+                    "dweb:/ipfs/QmNrLDBAHYFjpjSd12jerm1AdBkDqEYUUaXgnT854BUZ97"
+                ],
+                "license": "AGPL-3.0-only"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/src/tokens/ERC721.sol": {
+                "keccak256": "0x04af19f16f00ba65ae168d6d10da5210dc18da6bcec6974dccf984ba388aa22d",
+                "urls": [
+                    "bzz-raw://098e69f22b67da6927e03203c12ebfda5b0490518f6d9cce7853001ac5ad8403",
+                    "dweb:/ipfs/QmYyzfurQe88PsVjRNfutV3gS7Vi68f7zgtVZVtLfd4ViK"
+                ],
+                "license": "AGPL-3.0-only"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/lib/solmate/src/utils/SafeTransferLib.sol": {
+                "keccak256": "0x6ab948013c2c7ca6351e593600425b0ec6df9035320280c678e735bce16e996b",
+                "urls": [
+                    "bzz-raw://2ab977d0eeb2bf458f9798250215c646d2f3b1f90b5a7e2b506fdf3335c0f060",
+                    "dweb:/ipfs/QmYPRoPhNtBAmCSq7imN1scMVpKNQvMTpoqab3tXUx5Tnv"
+                ],
+                "license": "AGPL-3.0-only"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/interfaces/IERC20Minimal.sol": {
+                "keccak256": "0x6528f62516bb1da15f8494231ca3443ac280f354b829bdd97a50e8d4f7f0b876",
+                "urls": [
+                    "bzz-raw://096db736e5677eb7486c9804c42f36093780075ba6a8857a15235f76b7935116",
+                    "dweb:/ipfs/QmcDQ8uQe65FhEgb8kMbPsQSMJR7JjDmGE1JYgbZbogdiM"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/interfaces/IHooks.sol": {
+                "keccak256": "0xaa9f76208579867a495be7b5a1e93c967dea22e5a85084c22a291bbce9b99100",
+                "urls": [
+                    "bzz-raw://1e70e81cf3e171c5dee8a2fe8b4a5f578cdde63b898917f8c5aa483609fc24d1",
+                    "dweb:/ipfs/QmZxdEAhAoq3vKChEs91uhGbneKciJMYdQJyCf7HyD3LJg"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/interfaces/IPoolManager.sol": {
+                "keccak256": "0x11a6771dd056eb1fa46d02259ba75c1b25aa904bb14b5901188d0384fb4f74ca",
+                "urls": [
+                    "bzz-raw://2e30af527e8a9821ec298de421389333a9d480b94ca1a0faf95bcf1d4bd1b8a4",
+                    "dweb:/ipfs/Qme1gmr2cMT4hiWBybuu2hys198gqNoZwTrHWmJY1wWuCu"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/libraries/CustomRevert.sol": {
+                "keccak256": "0x895fc5c378b566a1f885d790ff2fce8757a9ecc46b2abfb62c8fc4eb3041212d",
+                "urls": [
+                    "bzz-raw://f404e214f03a0d09f226bea1bddf0cacb649658d0e5ac951d558fc609ef85728",
+                    "dweb:/ipfs/QmXnxSzVznpFf5jUzX9KWWGSng4zosU7sMr2x6U4tCzqMM"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/types/Currency.sol": {
+                "keccak256": "0xdb67407f05b4dd030771d0c3075a3bc4268bb9537030f0f80f2a387a63d8bb05",
+                "urls": [
+                    "bzz-raw://9c4c878a2ecf124d27430df8e6d1cf6de4ab31b7827177745b299fb33ecd3157",
+                    "dweb:/ipfs/QmaumQvgAvXeA9XfMXzBKvCs2RWkyvxJbA3gpqC23fVGas"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/types/PoolId.sol": {
+                "keccak256": "0xe8d82d1b6fcbe33b0afe4824bd595ea723168f54bf81d49cf646ce6cc5edd1aa",
+                "urls": [
+                    "bzz-raw://42652cf847cd923b82b5482e022d0d9e81944e220768a8e6530ab71afeed0470",
+                    "dweb:/ipfs/QmQMQUvAGTyTUzEAi3dr15tTqAWMCVenux8N7FfjGFpHgG"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/pancake-v4-core/src/types/PoolKey.sol": {
+                "keccak256": "0x5d86a4fc694d92e39133b4f81ffe5459274c475c1f9ef71c9d3bb91cb9360fd7",
+                "urls": [
+                    "bzz-raw://30987025fe9a4845ebc971ce1cc4108fad7f7e4541e8f7a60fbf468faa8565cb",
+                    "dweb:/ipfs/QmPpHdgqSjaMrJwx6s9yTdfM7mLt1BT1SEjocQ6o9G7iZY"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/interfaces/IAllowanceTransfer.sol": {
+                "keccak256": "0x78931704a7f1d89ef24244b155863abb751cc3b3818f64303ccb47a396d48dcb",
+                "urls": [
+                    "bzz-raw://b8d6e198ee29d809564f1c1d7caa11a2c329bb5d051f61210548e546493444d2",
+                    "dweb:/ipfs/QmVxWftbgETjudymgLdwF77S54DWrp6qB5ooauKXW81cm7"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/interfaces/IEIP712.sol": {
+                "keccak256": "0xea70db68ce450ad38dfbd490058595441144808eb95272ae9b89e3fbe6456954",
+                "urls": [
+                    "bzz-raw://e8fad9ff319665acdc2f1295bb82db3e5b4d52babc0b58f147dbdbb9f322c6e5",
+                    "dweb:/ipfs/QmTbYJPcux8eJ3qGVYQh6TiwCA2FPu6HXTUg6QFTnX91Ks"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/interfaces/IPermit2.sol": {
+                "keccak256": "0xaa631cc9f53e699301d94233007110a345e6779011def484e8dd97b8fe0af771",
+                "urls": [
+                    "bzz-raw://fc0502cf19c9c18f320a3001201e89e350393b75837f6b7971de18b2de06f30d",
+                    "dweb:/ipfs/QmT9SfhdJ7VJNNrf94g4H5usyi7ShqWGx7Cqsz9jZTjX96"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/interfaces/ISignatureTransfer.sol": {
+                "keccak256": "0x6805563eaad92471fa1b3591a71d7020a93e59f1a4ac95398daf74927f5bd033",
+                "urls": [
+                    "bzz-raw://48cd13806cb8e82dcc38eb93423a372fbdd3b05364ecebb8bfd9cd29078dd90c",
+                    "dweb:/ipfs/QmeLyFVrzKRHcm6aaFFBCG5mFESCqWLp1KYT41H8XhzMCp"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/lib/permit2/src/libraries/SafeCast160.sol": {
+                "keccak256": "0x8a34e2beac108d74f89510c949983212b5f09307a93ee9e17a9d50e93f6bc8e9",
+                "urls": [
+                    "bzz-raw://828697f9567ce617c5c1c8f76b6bcd250e93aea2c4f3ee188be6dff8443c19e7",
+                    "dweb:/ipfs/QmafxeSPhUc9gGtNDLAw26oZooC5XNLhDMxHxYhJxL5Nwi"
+                ],
+                "license": "MIT"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/interfaces/IPositionManager.sol": {
+                "keccak256": "0x036c8df255832fd808cf67e0364d763dd48b7f831b25148323908943f4467d9c",
+                "urls": [
+                    "bzz-raw://02c4bcee2b2cb246ab8eb4e0c2e6bd6660709ef58cd41b99725a8deeba828818",
+                    "dweb:/ipfs/QmYWpbcjqo31QH8qTomM3YPxg7cpHSsurD7e8Ss2goMDSf"
+                ],
+                "license": "UNLICENSED"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/interfaces/external/IV3NonfungiblePositionManager.sol": {
+                "keccak256": "0xf14aab91c0b1bd6ce2de55eba92fd43dff8d188300d7c03ae1b33f9d74eab6ef",
+                "urls": [
+                    "bzz-raw://8620e9c8f67b0d2393f1f8004b0997570aeee8ed531ba20770fadbc43cc46892",
+                    "dweb:/ipfs/QmafHRKfZRUVnaYJ8WJeV9KtSa6cYBRCGtqfjqMoHuoy1A"
+                ],
+                "license": "GPL-2.0-or-later"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/libraries/ActionConstants.sol": {
+                "keccak256": "0x6228ee215ed1478b1d5b817e8f6e0a8caf81141c9b5c20ee782d6e6869ac2d5c",
+                "urls": [
+                    "bzz-raw://27c3d45e119e022f1f7cc01e1c9d001aff3c06a4bc8be01cb43872f65ea1e5c5",
+                    "dweb:/ipfs/QmUFC6Wp6wGmcBz6mztFyMFXypfdyeSBsCZ6RENq6Ra6jc"
+                ],
+                "license": "GPL-2.0-or-later"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/libraries/BipsLibrary.sol": {
+                "keccak256": "0xca87f64bacef0eb0c382a4eb6650ac772bb9e5db764dccfc4389e94a04266e9c",
+                "urls": [
+                    "bzz-raw://c6835010a2fef0d419b90146d4bdd2119ddb7d781d480a64467c000214ecd6f9",
+                    "dweb:/ipfs/QmccdvjTMjhw6AdjYHj1htYS4qRCnVZAN3YGCwEf2W8TXa"
+                ],
+                "license": "GPL-2.0-or-later"
+            },
+            "lib/pancake-v4-universal-router/lib/pancake-v4-periphery/src/pool-cl/interfaces/IERC721Permit.sol": {
+                "keccak256": "0x492a9c67f08e6b33610af3606149ff1b37eb90ce7c087b3fdcc232483eaa37e0",
+                "urls": [
+                    "bzz-raw://e7386b71b4f1e271c79904c7a35d003f07dfcd15558bb6229e45e081701cb55d",
+                    "dweb:/ipfs/QmaNDgTiaGFUkUkJJJ4rbWUkzXvveoCufCKedEbjww2whG"
+                ],
+                "license": "GPL-2.0-or-later"
+            },
+            "lib/pancake-v4-universal-router/src/base/RouterImmutables.sol": {
+                "keccak256": "0x2d51cbb421a4ea5f01186eac16029cb1d340159aa9dc76fab9e570956ed3deaf",
+                "urls": [
+                    "bzz-raw://1eed3cd37f0ed9fd042c966e8ee9c74eb9fc2d170f542ed93dac656261146ff7",
+                    "dweb:/ipfs/QmVf5KuU4VC1VYt3xbDi4swMwJE3xyKknKhpGWaST5wANS"
+                ],
+                "license": "GPL-3.0-or-later"
+            },
+            "lib/pancake-v4-universal-router/src/interfaces/IWETH9.sol": {
+                "keccak256": "0x7e207c4f5e35ddfeefc8ef77ccf236a5f5426720d4f89de69b9c597b88480d5e",
+                "urls": [
+                    "bzz-raw://4630a32be58c463118f2689fc11efc50cfca7c26d3a56308a4b8d692c6a8d9e7",
+                    "dweb:/ipfs/QmPYpRh9snpkyeW812geoe3Fs5Qbtw6huFqFnCnnPmhKUJ"
+                ],
+                "license": "GPL-3.0-or-later"
+            },
+            "lib/pancake-v4-universal-router/src/libraries/Constants.sol": {
+                "keccak256": "0x1d9aefe59036803a09b3edf7a3f98a3bef105ed4f6c3519f15ced42b4bcc31e8",
+                "urls": [
+                    "bzz-raw://eb958d64ba982216a20debee9d2f5582bb3779f1a013dd714527934c002b3cc8",
+                    "dweb:/ipfs/QmWynTMNPQirWookZfYchVTjTBk69qFt3ZWCgBx6No2kKc"
+                ],
+                "license": "GPL-3.0-or-later"
+            },
+            "lib/pancake-v4-universal-router/src/modules/Payments.sol": {
+                "keccak256": "0x105703e72b75352a8e116e482d99ea9e69badadc70560a441c33ce670f7daaf9",
+                "urls": [
+                    "bzz-raw://34c03ac17ac0826abea9709b4d37301921b1275e6d25291a3a357f749755a557",
+                    "dweb:/ipfs/QmSx6Y7Qk1juUmFJAspYkXA23ayNmtRJmPC9AQy12Ua2ia"
+                ],
+                "license": "GPL-3.0-or-later"
+            },
+            "lib/pancake-v4-universal-router/src/modules/Permit2Payments.sol": {
+                "keccak256": "0x31272e84824c4f2881f3a4789af731ff647f5cf4534caa0ff05e5aac2b1bd1ba",
+                "urls": [
+                    "bzz-raw://63e977bfada98872b39f705f8f69d4d291986b562841f6bcbc28ef45a8288142",
+                    "dweb:/ipfs/QmURNq9vU2U6u3jp3JjHCxLqBLercWEAu7hxB5GS1Lro9c"
+                ],
+                "license": null
+            }
+        },
+        "version": 1
+    },
+    "id": 151
+}
