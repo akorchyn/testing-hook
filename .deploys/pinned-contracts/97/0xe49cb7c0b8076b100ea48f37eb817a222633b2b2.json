@@ -1,6 +1,6 @@
 {
   "name": "AllowlistHook",
-  "address": "0xcce8bae0d9b5c1f2eb13a55c62f4fb2b39b434f6",
+  "address": "0xe49cb7c0b8076b100ea48f37eb817a222633b2b2",
   "abi": [
     {
       "inputs": [
@@ -1081,5 +1081,5 @@
     }
   ],
   "filePath": " - connect to localhost - /src/pool-bin/AllowlistHook.sol",
-  "pinnedAt": 1727183580085
+  "pinnedAt": 1727279450137
 }

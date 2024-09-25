@@ -71,6 +71,32 @@ export const Planner = {
         );
     },
 
+    encodeBinSwapExactInputSingleParams(poolKey, swapForY, amountIn, amountOutMin, hookData) {
+        return ethers.utils.defaultAbiCoder.encode(
+            ['tuple(tuple(address,address,address,address,uint24,bytes32) poolKey, bool swapForY, uint128 amountIn, uint128 amountOutMin, bytes hookData)'],
+            [{ poolKey, swapForY, amountIn, amountOutMin, hookData }]
+        );
+    },
+
+    encodeBinSwapExactOutputSingleParams(poolKey, swapForY, amountInMaximum, amountOut, hookData) {
+        return ethers.utils.defaultAbiCoder.encode(
+            ['tuple(tuple(address,address,address,address,uint24,bytes32) poolKey, bool swapForY, uint128 amountOut, uint128 amountInMaximum, bytes hookData)'],
+            [{ poolKey, swapForY, amountOut, amountInMaximum, hookData }]
+        );
+    },
+
+    swap(plan, poolKey, swapForY, hookData, swapData) {
+        if (swapData.amountIn && swapData.amountOutMin) {
+            const encodedParams = this.encodeBinSwapExactInputSingleParams(poolKey, swapForY, swapData.amountIn, swapData.amountOutMin, hookData);
+            return plan.add(Actions.BIN_SWAP_EXACT_IN_SINGLE, encodedParams);
+        } else if (swapData.amountInMax && swapData.amountOut) {
+            const encodedParams = this.encodeBinSwapExactOutputSingleParams(poolKey, swapForY, swapData.amountInMax, swapData.amountOut, hookData);
+            return plan.add(Actions.BIN_SWAP_EXACT_OUT_SINGLE, encodedParams);
+        } else {
+            throw new Error('BinSwapExactInput and BinSwapExactOutput are not implemented');
+        }
+    },
+
     removeLiquidity(plan, poolKey, amount0Min, amount1Min, ids, amounts, from) {
         const encodedParams = this.encodeBinRemoveLiquidityParams(poolKey, amount0Min, amount1Min, ids, amounts, from);
         return plan.add(Actions.BIN_REMOVE_LIQUIDITY, encodedParams);

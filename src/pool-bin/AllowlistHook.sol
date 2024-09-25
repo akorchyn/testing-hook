@@ -19,7 +19,7 @@ contract AllowlistHook is BinBaseHook {
     mapping(address => bool) public banned;
     address public owner;
     PoolKey public poolKey;
-    uint24 public constant ACTIVE_ID = 2 ** 23;
+    uint24 public constant ACTIVE_ID = 8526770;
 
     error Banned();
     error NotBanlistManager();
@@ -46,7 +46,7 @@ contract AllowlistHook is BinBaseHook {
     ) external onlyOwner {
         bytes32 parameters = BinPoolParametersHelper.setBinStep(
             bytes32(uint256(this.getHooksRegistrationBitmap())),
-            10
+            1
         );
 
         poolKey = PoolKey({
