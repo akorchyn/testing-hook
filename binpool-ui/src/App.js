@@ -17,7 +17,7 @@ import addLiquidity from './commands/addLiquidity';
 import removeLiquidity from './commands/removeLiquidity';
 import { addPermitAllowanceIfNeeded, singlePermit } from './commands/createPermit';
 import { swapTokens } from './commands/performSwap';
-
+import BinPoolABI from './abi/BinPool.json';
 
 const ALLOWLIST_HOOK_ADDRESS = '0xe49CB7C0B8076B100Ea48F37EB817a222633B2B2';
 const BIN_POSITION_MANAGER_ADDRESS = '0xfB84c0D67f217f078E949d791b8d3081FE91Bca2';
@@ -60,7 +60,7 @@ const toPoolId = (poolKey) => {
   );
 };
 
-const BinCards = ({ bins, token0, token1 }) => {
+const BinCards = ({ bins, token0, token1, activeId }) => {
   const settings = {
     dots: true,
     infinite: false,
@@ -88,9 +88,13 @@ const BinCards = ({ bins, token0, token1 }) => {
             margin: '10px',
             boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
           }}>
-            <h3 style={{ color: '#333', borderBottom: '2px solid #ddd', paddingBottom: '10px' }}>
+            <h3 style={{ color: '#333', }}>
               Bin ID: {bin.id}
               <button onClick={() => copyToClipboard(bin.id.toString())} style={copyButtonStyle}>Copy</button>
+            </h3>
+            <h3 style={{ color: '#333', borderBottom: '2px solid #ddd', paddingBottom: '10px' }}>
+              Delta from active: {bin.id - activeId}
+              <button onClick={() => copyToClipboard((bin.id - activeId).toString())} style={copyButtonStyle}>Copy</button>
             </h3>
             <p>
               <strong>Price:</strong> {calculatePrice(bin.id, token0, token1).toFixed(6)} {token1?.symbol}/{token0?.symbol}
@@ -114,8 +118,9 @@ const BinCards = ({ bins, token0, token1 }) => {
             </p>
           </div>
         </div>
-      ))}
-    </Slider>
+      ))
+      }
+    </Slider >
   );
 };
 
@@ -152,13 +157,13 @@ export default function AllowlistHookUI() {
 
   const [amount0, setAmount0] = useState('');
   const [amount1, setAmount1] = useState('');
-  const [amount0Min, setAmount0Min] = useState('');
-  const [amount1Min, setAmount1Min] = useState('');
+  const [amount0Max, setAmount0Max] = useState('');
+  const [amount1Max, setAmount1Max] = useState('');
   const [activeIdDesired, setActiveIdDesired] = useState('');
   const [idSlippage, setIdSlippage] = useState('10');
-  const [deltaIds, setDeltaIds] = useState('');
-  const [distributionX, setDistributionX] = useState('');
-  const [distributionY, setDistributionY] = useState('');
+  const [deltaIds, setDeltaIds] = useState('0');
+  const [distributionX, setDistributionX] = useState('1');
+  const [distributionY, setDistributionY] = useState('1');
   const [txHash, setTxHash] = useState('');
   const [error, setError] = useState('');
 
@@ -182,7 +187,6 @@ export default function AllowlistHookUI() {
   const [userToken1Balance, setUserToken1Balance] = useState('');
 
   // Add new state variables for price display
-  const [activeIdDesiredPrice, setActiveIdDesiredPrice] = useState(null);
   const [removeIdsPrice, setRemoveIdsPrice] = useState([]);
 
   // Add new state variables for price input
@@ -191,6 +195,9 @@ export default function AllowlistHookUI() {
 
   // New state variable to store all bin information
   const [allBins, setAllBins] = useState([]);
+
+  // Add a new state variable for delta ID prices
+  const [deltaIdPrices, setDeltaIdPrices] = useState([]);
 
   const fetchAllBins = async () => {
     if (!binPoolManagerContract || !poolId) return;
@@ -216,6 +223,29 @@ export default function AllowlistHookUI() {
         break;
       }
     }
+
+    currentBinId = activeId;
+    for (let i = 0; i < MAX_BINS; i++) {
+      try {
+        const [binReserveX, binReserveY, binLiquidity, totalShares] = await binPoolManagerContract.getBin(poolId, currentBinId);
+        if (currentBinId !== activeId) {
+          bins.push({
+            id: currentBinId,
+            reserveX: binReserveX,
+            reserveY: binReserveY,
+            liquidity: binLiquidity,
+            totalShares: totalShares,
+          });
+        }
+
+        // Get the next non-empty bin
+        currentBinId = await binPoolManagerContract.getNextNonEmptyBin(poolId, false, currentBinId);
+      } catch (error) {
+        break;
+      }
+    }
+
+    bins.sort((a, b) => a.id - b.id);
 
     setAllBins(bins);
   };
@@ -256,6 +286,7 @@ export default function AllowlistHookUI() {
 
         const [activeId, protocolFee, lpFee] = await binPoolManagerContract.getSlot0(computedPoolId);
         setActiveId(activeId);
+        setActiveIdDesired(activeId);
         setProtocolFee(protocolFee);
         setLpFee(lpFee);
 
@@ -310,7 +341,8 @@ export default function AllowlistHookUI() {
 
         // Try to decode error using different contract interfaces
         const hookContract = new ethers.Contract(poolKey.hooks, HookABI, signer);
-        const contracts = [binPositionManagerContract, binPoolManagerContract, allowlistHookContract, universalRouterContract];
+        const binPoolContract = new ethers.Contract(poolKey.poolManager, BinPoolABI, signer);
+        const contracts = [binPositionManagerContract, binPoolManagerContract, allowlistHookContract, universalRouterContract, binPoolContract];
         for (const contract of contracts) {
           if (contract) {
             try {
@@ -349,8 +381,8 @@ export default function AllowlistHookUI() {
   const handleAddLiquidity = async () => {
     const formattedAmount0 = ethers.utils.parseUnits(amount0, token0.decimals);
     const formattedAmount1 = ethers.utils.parseUnits(amount1, token1.decimals);
-    const formattedAmount0Min = ethers.utils.parseUnits(amount0Min, token0.decimals);
-    const formattedAmount1Min = ethers.utils.parseUnits(amount1Min, token1.decimals);
+    const formattedAmount0Max = ethers.utils.parseUnits(amount0Max, token0.decimals);
+    const formattedAmount1Max = ethers.utils.parseUnits(amount1Max, token1.decimals);
 
     const formattedDeltaIds = deltaIds.split(',');
     const formattedDistributionX = distributionX.split(',').map(d => ethers.utils.parseEther(d));
@@ -367,8 +399,8 @@ export default function AllowlistHookUI() {
         poolKey,
         formattedAmount0,
         formattedAmount1,
-        formattedAmount0Min,
-        formattedAmount1Min,
+        formattedAmount0Max,
+        formattedAmount1Max,
         activeIdDesired,
         idSlippage,
         formattedDeltaIds,
@@ -495,16 +527,36 @@ export default function AllowlistHookUI() {
 
 
   // Update this function to calculate and set price when activeIdDesired changes
+  const handleDeltaIdsChange = (e) => {
+    const value = e.target.value;
+    setDeltaIds(value);
+    updateDeltaIdPrices(value, activeIdDesired);
+  };
+
+  // Add this new function to handle activeIdDesired changes
   const handleActiveIdDesiredChange = (e) => {
     const value = e.target.value;
     setActiveIdDesired(value);
-    if (value && !isNaN(value)) {
-      const price = calculatePrice(parseInt(value), token0, token1);
-      setActiveIdDesiredPrice(price);
+    updateDeltaIdPrices(deltaIds, value);
+  };
+
+  // Add this new function to update deltaIdPrices
+  const updateDeltaIdPrices = (deltaIdsValue, activeIdDesiredValue) => {
+    if (deltaIdsValue && activeIdDesiredValue) {
+      const desiredActiveId = parseInt(activeIdDesiredValue);
+      const deltaValues = deltaIdsValue.split(',').map(id => id.trim());
+      const prices = deltaValues.map(delta => {
+        if (!isNaN(delta)) {
+          const binId = desiredActiveId + parseInt(delta);
+          return calculatePrice(binId, token0, token1);
+        }
+        return null;
+      });
+      setDeltaIdPrices(prices);
     } else {
-      setActiveIdDesiredPrice(null);
+      setDeltaIdPrices([]);
     }
-  }
+  };
 
   // Update this function to calculate and set prices when removeIds change
   const handleRemoveIdsChange = (e) => {
@@ -514,7 +566,6 @@ export default function AllowlistHookUI() {
       const ids = value.split(',').map(id => id.trim());
       const prices = ids.map(id => {
         if (!isNaN(id)) {
-          return calculatePrice(parseInt(id), token0, token1);
         }
         return null;
       });
@@ -589,7 +640,7 @@ export default function AllowlistHookUI() {
       {/* Pool Bins section */}
       <div style={{ background: '#fff3e0', padding: '15px', borderRadius: '5px', marginBottom: '20px' }}>
         <h2 style={{ marginTop: 0, color: '#e65100' }}>Pool Bins</h2>
-        <BinCards bins={allBins} token0={token0} token1={token1} />
+        <BinCards bins={allBins} token0={token0} token1={token1} activeId={activeId} />
       </div>
 
       {error && (
@@ -626,16 +677,16 @@ export default function AllowlistHookUI() {
           />
           <input
             type="text"
-            placeholder={`Min amount of ${token0?.symbol || 'token0'}`}
-            value={amount0Min}
-            onChange={(e) => setAmount0Min(e.target.value)}
+            placeholder={`Max amount of ${token0?.symbol || 'token0'}`}
+            value={amount0Max}
+            onChange={(e) => setAmount0Max(e.target.value)}
             style={{ width: '98%', padding: '5px', marginBottom: '10px' }}
           />
           <input
             type="text"
-            placeholder={`Min amount of ${token1?.symbol || 'token1'}`}
-            value={amount1Min}
-            onChange={(e) => setAmount1Min(e.target.value)}
+            placeholder={`Max amount of ${token1?.symbol || 'token1'}`}
+            value={amount1Max}
+            onChange={(e) => setAmount1Max(e.target.value)}
             style={{ width: '98%', padding: '5px', marginBottom: '10px' }}
           />
           <input
@@ -645,37 +696,53 @@ export default function AllowlistHookUI() {
             onChange={handleActiveIdDesiredChange}
             style={{ width: '98%', padding: '5px', marginBottom: '10px' }}
           />
-          {activeIdDesiredPrice !== null && (
-            <p style={{ marginBottom: '10px' }}>
-              <strong>Approximate price in this bin:</strong> {activeIdDesiredPrice.toFixed(6)} {token1?.symbol}/{token0?.symbol}
-            </p>
-          )}
-          <input
-            type="text"
-            placeholder="ID Slippage"
-            value={idSlippage}
-            onChange={(e) => setIdSlippage(e.target.value)}
-            style={{ width: '98%', padding: '5px', marginBottom: '10px' }}
-          />
           <input
             type="text"
             placeholder="Delta IDs (comma-separated)"
             value={deltaIds}
-            onChange={(e) => setDeltaIds(e.target.value)}
+            onChange={handleDeltaIdsChange}
             style={{ width: '98%', padding: '5px', marginBottom: '10px' }}
           />
           <input
             type="text"
-            placeholder="Distribution X (comma-separated percentages)"
+            placeholder={`Distribution ${token0?.symbol} (comma-separated where 1 is 100%)`}
             value={distributionX}
             onChange={(e) => setDistributionX(e.target.value)}
             style={{ width: '98%', padding: '5px', marginBottom: '10px' }}
           />
           <input
             type="text"
-            placeholder="Distribution Y (comma-separated percentages)"
+            placeholder={`Distribution ${token1?.symbol} (comma-separated where 1 is 100%)`}
             value={distributionY}
             onChange={(e) => setDistributionY(e.target.value)}
+            style={{ width: '98%', padding: '5px', marginBottom: '10px' }}
+          />
+          {deltaIdPrices.length > 0 && (
+            <div style={{ marginBottom: '10px' }}>
+              <strong>Approximate prices and distributions for delta IDs:</strong>
+              <ul style={{ margin: '5px 0', paddingLeft: '20px' }}>
+                {deltaIdPrices.map((price, index) => {
+                  const deltaId = deltaIds.split(',')[index].trim();
+                  const distributionXValue = distributionX.split(',')[index] || '0';
+                  const distributionYValue = distributionY.split(',')[index] || '0';
+                  return (
+                    <li key={index}>
+                      <strong>Delta ID {deltaId} - {parseInt(deltaId) + activeId}</strong>:
+                      {price ? `${price.toFixed(6)} ${token1?.symbol}/${token0?.symbol}` : 'Invalid ID'}
+                      <br />
+                      Distribution: {parseFloat(distributionXValue) * 100}% {token0?.symbol},
+                      {parseFloat(distributionYValue) * 100}% {token1?.symbol}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+          <input
+            type="text"
+            placeholder="ID Slippage"
+            value={idSlippage}
+            onChange={(e) => setIdSlippage(e.target.value)}
             style={{ width: '98%', padding: '5px', marginBottom: '10px' }}
           />
           <button

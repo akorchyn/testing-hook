@@ -1,0 +1,75 @@
+[
+  {
+    "type": "error",
+    "name": "BinPool__BurnZeroAmount",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "BinPool__EmptyLiquidityConfigs",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "BinPool__InsufficientAmountUnSpecified",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "BinPool__InvalidBurnInput",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "BinPool__NoLiquidityToReceiveFees",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "BinPool__OutOfLiquidity",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "BinPool__ZeroAmountsOut",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "BinPool__ZeroShares",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "PoolAlreadyInitialized",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "PoolInvalidParameter",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "PoolNotInitialized",
+    "inputs": []
+  }
+]

@@ -6,8 +6,8 @@ const addLiquidity = async (
     poolKey,
     amount0,
     amount1,
-    amount0Min,
-    amount1Min,
+    amount0Max,
+    amount1Max,
     activeIdDesired,
     idSlippage,
     deltaIds,
@@ -27,8 +27,8 @@ const addLiquidity = async (
             poolKey,
             amount0,  // Now using pre-formatted values
             amount1,  // Now using pre-formatted values
-            amount0Min,  // Now using pre-formatted values
-            amount1Min,  // Now using pre-formatted values
+            amount0Max,  // Now using pre-formatted values
+            amount1Max,  // Now using pre-formatted values
             activeIdDesired,
             idSlippage,
             deltaIds,

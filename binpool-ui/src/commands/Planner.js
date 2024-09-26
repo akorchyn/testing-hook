@@ -50,16 +50,16 @@ export const Planner = {
         return new Plan();
     },
 
-    encodeBinAddLiquidityParams(poolKey, amount0, amount1, amount0Min, amount1Min, activeIdDesired, idSlippage, deltaIds, distributionX, distributionY, to) {
+    encodeBinAddLiquidityParams(poolKey, amount0, amount1, amount0Max, amount1Max, activeIdDesired, idSlippage, deltaIds, distributionX, distributionY, to) {
         return ethers.utils.defaultAbiCoder.encode(
-            ['tuple(tuple(address,address,address,address,uint24,bytes32) poolKey, uint128 amount0, uint128 amount1, uint128 amount0Min, uint128 amount1Min, uint256 activeIdDesired, uint256 idSlippage, int256[] deltaIds, uint256[] distributionX, uint256[] distributionY, address to)'],
-            [{ poolKey, amount0, amount1, amount0Min, amount1Min, activeIdDesired, idSlippage, deltaIds, distributionX, distributionY, to }]
+            ['tuple(tuple(address,address,address,address,uint24,bytes32) poolKey, uint128 amount0, uint128 amount1, uint128 amount0Max, uint128 amount1Max, uint256 activeIdDesired, uint256 idSlippage, int256[] deltaIds, uint256[] distributionX, uint256[] distributionY, address to)'],
+            [{ poolKey, amount0, amount1, amount0Max, amount1Max, activeIdDesired, idSlippage, deltaIds, distributionX, distributionY, to }]
         );
     },
 
-    addLiquidity(plan, poolKey, amount0, amount1, amount0Min, amount1Min, activeIdDesired, idSlippage, deltaIds, distributionX, distributionY, to) {
+    addLiquidity(plan, poolKey, amount0, amount1, amount0Max, amount1Max, activeIdDesired, idSlippage, deltaIds, distributionX, distributionY, to) {
         const encodedParams = this.encodeBinAddLiquidityParams(
-            poolKey, amount0, amount1, amount0Min, amount1Min, activeIdDesired, idSlippage, deltaIds, distributionX, distributionY, to
+            poolKey, amount0, amount1, amount0Max, amount1Max, activeIdDesired, idSlippage, deltaIds, distributionX, distributionY, to
         );
         return plan.add(Actions.BIN_ADD_LIQUIDITY, encodedParams);
     },
