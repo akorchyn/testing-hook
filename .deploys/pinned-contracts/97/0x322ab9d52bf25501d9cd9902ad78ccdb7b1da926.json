@@ -1,0 +1,116 @@
+{
+  "name": "SwapExample",
+  "address": "0x322ab9d52bf25501d9cd9902ad78ccdb7b1da926",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint128",
+          "name": "amount",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "receiveMin",
+          "type": "uint128"
+        }
+      ],
+      "name": "swap",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract AllowlistHook",
+          "name": "hook",
+          "type": "address"
+        },
+        {
+          "internalType": "contract UniversalRouter",
+          "name": "_universalRouter",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IPermit2",
+          "name": "_permit2",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "permit2",
+      "outputs": [
+        {
+          "internalType": "contract IPermit2",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "poolKey",
+      "outputs": [
+        {
+          "internalType": "Currency",
+          "name": "currency0",
+          "type": "address"
+        },
+        {
+          "internalType": "Currency",
+          "name": "currency1",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IHooks",
+          "name": "hooks",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IPoolManager",
+          "name": "poolManager",
+          "type": "address"
+        },
+        {
+          "internalType": "uint24",
+          "name": "fee",
+          "type": "uint24"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "parameters",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "universalRouter",
+      "outputs": [
+        {
+          "internalType": "contract UniversalRouter",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "filePath": " - connect to localhost - /src/pool-bin/SwapExample.sol",
+  "pinnedAt": 1727727591193
+}

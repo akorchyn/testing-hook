@@ -17,7 +17,6 @@ export const swapTokens = async (
         // Create the plan
         let plan = Planner.init();
 
-        // Remove liquidity action
         Planner.swap(
             plan,
             poolKey,
@@ -39,7 +38,6 @@ export const swapTokens = async (
 
         const args = [permitCall, encodedPlan];
         // Execute multicall
-        console.log({ commands, args, deadline })
         const tx = await universalRouterContract.execute(commands, args, deadline);
 
         // Wait for the transaction to be mined
