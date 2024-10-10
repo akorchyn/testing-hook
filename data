@@ -1,0 +1,16 @@
+Trade
+2 GEM
+FOR
+1 C
+
+USER GEM 9806 (-2) Swapped
+USER C 465.2 (+1) Received
+
+BIN:
+RESERVE GEM 9 (+2) Pool received user funds
+C 3 (0) covered by BusinessManager
+
+CONTRACT:
+3 GEM (> 3 GEM in balance)
+3 C (-1) - Added liquidity to the pool to cover it
+

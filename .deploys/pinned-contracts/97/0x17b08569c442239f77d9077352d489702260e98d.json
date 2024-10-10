@@ -1,6 +1,6 @@
 {
   "name": "ProxyHook",
-  "address": "0xec3c86a0fb60833a896c8e755aaad865de8066c5",
+  "address": "0x17b08569c442239f77d9077352d489702260e98d",
   "abi": [
     {
       "inputs": [
@@ -1088,5 +1088,5 @@
     }
   ],
   "filePath": " - connect to localhost - /src/pool-bin/ProxyHook.sol",
-  "pinnedAt": 1728580920205
+  "pinnedAt": 1728585658919
 }

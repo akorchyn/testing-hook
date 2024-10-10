@@ -10,6 +10,8 @@ import BinPositionManagerABI from './abi/BinPositionManager.json';
 import Permit2ABI from './abi/Permit2.json';
 import ERC20ABI from './abi/ERC20.json';
 import HookABI from './abi/Hook.json';
+import VaultABI from './abi/Vault.json';
+import BusinessManagerABI from './abi/BusinessManager.json';
 import UniversalRouterABI from './abi/UniversalRouter.json';
 
 
@@ -19,7 +21,7 @@ import { addPermitAllowanceIfNeeded, singlePermit } from './commands/createPermi
 import { swapTokens } from './commands/performSwap';
 import BinPoolABI from './abi/BinPool.json';
 
-const PROXY_HOOK_ADDRESS = '0xEc3c86a0Fb60833A896c8e755aAAD865de8066C5';
+const PROXY_HOOK_ADDRESS = '0x17B08569C442239f77d9077352d489702260e98D';
 const BIN_POSITION_MANAGER_ADDRESS = '0xfB84c0D67f217f078E949d791b8d3081FE91Bca2';
 const PERMIT2_ADDRESS = '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768';
 const UNIVERSAL_ROUTER_ADDRESS = '0x30067B296Edf5BEbB1CB7b593898794DDF6ab7c5';
@@ -262,7 +264,7 @@ export default function AllowlistHookUI() {
         const userAddress = await signer.getAddress();
         setUserAddress(userAddress);
 
-        const allowlistHookContract = new ethers.Contract(PROXY_HOOK_ADDRESS, AllowlistHookABI.abi, signer);
+        const allowlistHookContract = new ethers.Contract(PROXY_HOOK_ADDRESS, AllowlistHookABI, signer);
         setAllowlistHookContract(allowlistHookContract);
 
         const binPositionManagerContract = new ethers.Contract(BIN_POSITION_MANAGER_ADDRESS, BinPositionManagerABI, signer);
@@ -332,7 +334,7 @@ export default function AllowlistHookUI() {
     fetchAllBins();
   }, [binPoolManagerContract, poolId, activeId]);
 
-  const handleError = (err, operation) => {
+  const handleError = (err, operation, recursive = false) => {
     let errorMessage = `An error occurred while ${operation}`;
     if (err.error && err.error.data && err.error.data.data) {
       try {
@@ -342,8 +344,12 @@ export default function AllowlistHookUI() {
         // Try to decode error using different contract interfaces
         const hookContract = new ethers.Contract(poolKey.hooks, HookABI, signer);
         const binPoolContract = new ethers.Contract(poolKey.poolManager, BinPoolABI, signer);
-        const contracts = [binPositionManagerContract, binPoolManagerContract, allowlistHookContract, universalRouterContract, binPoolContract];
-        for (const contract of contracts) {
+        const businessManagerContract = new ethers.Contract(poolKey.poolManager, BusinessManagerABI, signer);
+        const vaultContract = new ethers.Contract(poolKey.poolManager, VaultABI, signer);
+        const erc20Contract = new ethers.Contract(poolKey.poolManager, ERC20ABI.abi, signer);
+        const permit2Contract = new ethers.Contract(PERMIT2_ADDRESS, Permit2ABI, signer);
+        const contracts = [vaultContract, binPositionManagerContract, permit2Contract, businessManagerContract, binPoolManagerContract, allowlistHookContract, universalRouterContract, binPoolContract, erc20Contract];
+        for (const [index, contract] of contracts.entries()) {
           if (contract) {
             try {
               decodedError = contract.interface.parseError(revertData);
@@ -353,11 +359,14 @@ export default function AllowlistHookUI() {
           }
         }
 
-        if (!decodedError) {
+        if (!decodedError && !recursive) {
+          console.log("Didn't find error in contracts, trying hook");
           decodedError = hookContract.interface.parseError(revertData);
           if (decodedError) {
-
-            return handleError({ error: { data: { data: decodedError.args.revertReason } } }, 'decoding error');
+            const error = handleError({ error: { data: { data: decodedError.args.revertReason } } }, 'decoding error', true);
+            errorMessage = "Hook failed: " + error;
+            setError(errorMessage);
+            return errorMessage;
           }
         }
 
@@ -375,7 +384,10 @@ export default function AllowlistHookUI() {
       errorMessage = err.message;
     }
 
-    setError(errorMessage);
+    if (!recursive) {
+      setError(errorMessage);
+    }
+    return errorMessage;
   };
 
   const handleAddLiquidity = async () => {
@@ -388,7 +400,7 @@ export default function AllowlistHookUI() {
     const formattedDistributionX = distributionX.split(',').map(d => ethers.utils.parseEther(d));
     const formattedDistributionY = distributionY.split(',').map(d => ethers.utils.parseEther(d));
 
-    const permit2Contract = new ethers.Contract(PERMIT2_ADDRESS, Permit2ABI.abi, signer);
+    const permit2Contract = new ethers.Contract(PERMIT2_ADDRESS, Permit2ABI, signer);
     await addPermitAllowanceIfNeeded(signer, token1Contract, permit2Contract);
     await addPermitAllowanceIfNeeded(signer, token0Contract, permit2Contract);
 
@@ -475,7 +487,7 @@ export default function AllowlistHookUI() {
     try {
       const tokenIn = swapForY ? token0Contract : token1Contract;
       const tokenOut = swapForY ? token1Contract : token0Contract;
-      const permit2Contract = new ethers.Contract(PERMIT2_ADDRESS, Permit2ABI.abi, signer);
+      const permit2Contract = new ethers.Contract(PERMIT2_ADDRESS, Permit2ABI, signer);
 
       // Create Permit2
       await addPermitAllowanceIfNeeded(signer, tokenIn, permit2Contract);

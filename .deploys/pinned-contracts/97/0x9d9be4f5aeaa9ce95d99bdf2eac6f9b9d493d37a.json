@@ -1,7 +1,20 @@
 {
-  "name": "AllowlistHook",
-  "address": "0x37a0126648413a42f0318901e5b42aad8aebe747",
+  "name": "BusinessManager",
+  "address": "0x9d9be4f5aeaa9ce95d99bdf2eac6f9b9d493d37a",
   "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "payload",
+          "type": "bytes"
+        }
+      ],
+      "name": "_send_liquidity",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
     {
       "inputs": [
         {
@@ -329,7 +342,7 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "",
+          "name": "sender",
           "type": "address"
         },
         {
@@ -366,27 +379,27 @@
             }
           ],
           "internalType": "struct PoolKey",
-          "name": "",
+          "name": "key",
           "type": "tuple"
         },
         {
           "internalType": "bool",
-          "name": "",
+          "name": "swapForY",
           "type": "bool"
         },
         {
           "internalType": "int128",
-          "name": "",
+          "name": "amountSpecified",
           "type": "int128"
         },
         {
           "internalType": "BalanceDelta",
-          "name": "",
+          "name": "delta",
           "type": "int256"
         },
         {
           "internalType": "bytes",
-          "name": "",
+          "name": "hookData",
           "type": "bytes"
         }
       ],
@@ -422,13 +435,18 @@
     {
       "inputs": [
         {
-          "internalType": "contract IBinPoolManager",
-          "name": "_poolManager",
+          "internalType": "contract IBinPositionManager",
+          "name": "_positionManager",
           "type": "address"
         },
         {
           "internalType": "address",
           "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IPermit2",
+          "name": "_permit2",
           "type": "address"
         }
       ],
@@ -789,7 +807,7 @@
             }
           ],
           "internalType": "struct PoolKey",
-          "name": "",
+          "name": "key",
           "type": "tuple"
         },
         {
@@ -904,6 +922,43 @@
       "anonymous": false,
       "inputs": [
         {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "token1inActive",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "token2inActive",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "binLiquidity",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "totalShares",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "activeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Data",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
           "indexed": true,
           "internalType": "address",
           "name": "previousOwner",
@@ -922,6 +977,29 @@
     {
       "inputs": [],
       "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "PoolId",
+          "name": "poolId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minToken0",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minToken1",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMinLiquidity",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -985,11 +1063,48 @@
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "PoolId",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "minLiquidityPerPool",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenX",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenY",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "owner",
       "outputs": [
         {
           "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "permit2",
+      "outputs": [
+        {
+          "internalType": "contract IPermit2",
           "name": "",
           "type": "address"
         }
@@ -1012,6 +1127,19 @@
     },
     {
       "inputs": [],
+      "name": "positionManager",
+      "outputs": [
+        {
+          "internalType": "contract IBinPositionManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "vault",
       "outputs": [
         {
@@ -1024,6 +1152,6 @@
       "type": "function"
     }
   ],
-  "filePath": " - connect to localhost - /src/pool-bin/AllowlistHook.sol",
-  "pinnedAt": 1728580860339
+  "filePath": " - connect to localhost - /src/pool-bin/BusinessManager.sol",
+  "pinnedAt": 1728597259239
 }

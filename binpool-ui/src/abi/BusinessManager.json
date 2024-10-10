@@ -3,47 +3,42 @@
     "type": "constructor",
     "inputs": [
       {
-        "name": "poolManager",
+        "name": "_positionManager",
         "type": "address",
-        "internalType": "contract IBinPoolManager"
+        "internalType": "contract IBinPositionManager"
       },
       {
         "name": "_owner",
         "type": "address",
         "internalType": "address"
-      },
-      {
-        "name": "_implementation",
-        "type": "address",
-        "internalType": "contract IBinHooks"
       }
     ],
     "stateMutability": "nonpayable"
   },
   {
     "type": "function",
-    "name": "ACTIVE_ID",
-    "inputs": [],
-    "outputs": [
+    "name": "_send_liquidity",
+    "inputs": [
       {
-        "name": "",
-        "type": "uint24",
-        "internalType": "uint24"
+        "name": "payload",
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "stateMutability": "view"
+    "outputs": [],
+    "stateMutability": "nonpayable"
   },
   {
     "type": "function",
     "name": "afterBurn",
     "inputs": [
       {
-        "name": "sender",
+        "name": "",
         "type": "address",
         "internalType": "address"
       },
       {
-        "name": "key",
+        "name": "",
         "type": "tuple",
         "internalType": "struct PoolKey",
         "components": [
@@ -80,7 +75,7 @@
         ]
       },
       {
-        "name": "params",
+        "name": "",
         "type": "tuple",
         "internalType": "struct IBinPoolManager.BurnParams",
         "components": [
@@ -102,12 +97,12 @@
         ]
       },
       {
-        "name": "delta",
+        "name": "",
         "type": "int256",
         "internalType": "BalanceDelta"
       },
       {
-        "name": "hookData",
+        "name": "",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -131,12 +126,12 @@
     "name": "afterDonate",
     "inputs": [
       {
-        "name": "sender",
+        "name": "",
         "type": "address",
         "internalType": "address"
       },
       {
-        "name": "key",
+        "name": "",
         "type": "tuple",
         "internalType": "struct PoolKey",
         "components": [
@@ -173,17 +168,17 @@
         ]
       },
       {
-        "name": "amount0",
+        "name": "",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "amount1",
+        "name": "",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "hookData",
+        "name": "",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -202,12 +197,12 @@
     "name": "afterInitialize",
     "inputs": [
       {
-        "name": "sender",
+        "name": "",
         "type": "address",
         "internalType": "address"
       },
       {
-        "name": "key",
+        "name": "",
         "type": "tuple",
         "internalType": "struct PoolKey",
         "components": [
@@ -244,12 +239,12 @@
         ]
       },
       {
-        "name": "activeId",
+        "name": "",
         "type": "uint24",
         "internalType": "uint24"
       },
       {
-        "name": "hookData",
+        "name": "",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -268,12 +263,12 @@
     "name": "afterMint",
     "inputs": [
       {
-        "name": "sender",
+        "name": "",
         "type": "address",
         "internalType": "address"
       },
       {
-        "name": "key",
+        "name": "",
         "type": "tuple",
         "internalType": "struct PoolKey",
         "components": [
@@ -310,7 +305,7 @@
         ]
       },
       {
-        "name": "params",
+        "name": "",
         "type": "tuple",
         "internalType": "struct IBinPoolManager.MintParams",
         "components": [
@@ -332,12 +327,12 @@
         ]
       },
       {
-        "name": "delta",
+        "name": "",
         "type": "int256",
         "internalType": "BalanceDelta"
       },
       {
-        "name": "hookData",
+        "name": "",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -439,15 +434,47 @@
   },
   {
     "type": "function",
+    "name": "ban",
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "banned",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "beforeBurn",
     "inputs": [
       {
-        "name": "sender",
+        "name": "",
         "type": "address",
         "internalType": "address"
       },
       {
-        "name": "key",
+        "name": "",
         "type": "tuple",
         "internalType": "struct PoolKey",
         "components": [
@@ -484,7 +511,7 @@
         ]
       },
       {
-        "name": "params",
+        "name": "",
         "type": "tuple",
         "internalType": "struct IBinPoolManager.BurnParams",
         "components": [
@@ -506,7 +533,7 @@
         ]
       },
       {
-        "name": "hookData",
+        "name": "",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -525,12 +552,12 @@
     "name": "beforeDonate",
     "inputs": [
       {
-        "name": "sender",
+        "name": "",
         "type": "address",
         "internalType": "address"
       },
       {
-        "name": "key",
+        "name": "",
         "type": "tuple",
         "internalType": "struct PoolKey",
         "components": [
@@ -567,17 +594,17 @@
         ]
       },
       {
-        "name": "amount0",
+        "name": "",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "amount1",
+        "name": "",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "hookData",
+        "name": "",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -596,12 +623,12 @@
     "name": "beforeInitialize",
     "inputs": [
       {
-        "name": "sender",
+        "name": "",
         "type": "address",
         "internalType": "address"
       },
       {
-        "name": "key",
+        "name": "",
         "type": "tuple",
         "internalType": "struct PoolKey",
         "components": [
@@ -638,12 +665,12 @@
         ]
       },
       {
-        "name": "activeId",
+        "name": "",
         "type": "uint24",
         "internalType": "uint24"
       },
       {
-        "name": "hookData",
+        "name": "",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -662,12 +689,12 @@
     "name": "beforeMint",
     "inputs": [
       {
-        "name": "sender",
+        "name": "",
         "type": "address",
         "internalType": "address"
       },
       {
-        "name": "key",
+        "name": "",
         "type": "tuple",
         "internalType": "struct PoolKey",
         "components": [
@@ -704,7 +731,7 @@
         ]
       },
       {
-        "name": "params",
+        "name": "",
         "type": "tuple",
         "internalType": "struct IBinPoolManager.MintParams",
         "components": [
@@ -726,7 +753,7 @@
         ]
       },
       {
-        "name": "hookData",
+        "name": "",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -750,7 +777,7 @@
     "name": "beforeSwap",
     "inputs": [
       {
-        "name": "sender",
+        "name": "",
         "type": "address",
         "internalType": "address"
       },
@@ -792,17 +819,17 @@
         ]
       },
       {
-        "name": "swapForY",
+        "name": "",
         "type": "bool",
         "internalType": "bool"
       },
       {
-        "name": "amountSpecified",
+        "name": "",
         "type": "int128",
         "internalType": "int128"
       },
       {
-        "name": "hookData",
+        "name": "",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -837,38 +864,7 @@
         "internalType": "uint16"
       }
     ],
-    "stateMutability": "view"
-  },
-  {
-    "type": "function",
-    "name": "implementation",
-    "inputs": [],
-    "outputs": [
-      {
-        "name": "",
-        "type": "address",
-        "internalType": "contract IBinHooks"
-      }
-    ],
-    "stateMutability": "view"
-  },
-  {
-    "type": "function",
-    "name": "initialize",
-    "inputs": [
-      {
-        "name": "currency0",
-        "type": "address",
-        "internalType": "Currency"
-      },
-      {
-        "name": "currency1",
-        "type": "address",
-        "internalType": "Currency"
-      }
-    ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    "stateMutability": "pure"
   },
   {
     "type": "function",
@@ -891,6 +887,30 @@
   },
   {
     "type": "function",
+    "name": "minLiquidityPerPool",
+    "inputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "PoolId"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "tokenX",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "tokenY",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "owner",
     "inputs": [],
     "outputs": [
@@ -904,38 +924,13 @@
   },
   {
     "type": "function",
-    "name": "poolKey",
+    "name": "permit2",
     "inputs": [],
     "outputs": [
       {
-        "name": "currency0",
+        "name": "",
         "type": "address",
-        "internalType": "Currency"
-      },
-      {
-        "name": "currency1",
-        "type": "address",
-        "internalType": "Currency"
-      },
-      {
-        "name": "hooks",
-        "type": "address",
-        "internalType": "contract IHooks"
-      },
-      {
-        "name": "poolManager",
-        "type": "address",
-        "internalType": "contract IPoolManager"
-      },
-      {
-        "name": "fee",
-        "type": "uint24",
-        "internalType": "uint24"
-      },
-      {
-        "name": "parameters",
-        "type": "bytes32",
-        "internalType": "bytes32"
+        "internalType": "contract IPermit2"
       }
     ],
     "stateMutability": "view"
@@ -955,6 +950,19 @@
   },
   {
     "type": "function",
+    "name": "positionManager",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "contract IBinPositionManager"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "renounceOwnership",
     "inputs": [],
     "outputs": [],
@@ -962,12 +970,22 @@
   },
   {
     "type": "function",
-    "name": "setImplementation",
+    "name": "setMinLiquidity",
     "inputs": [
       {
-        "name": "_implementation",
-        "type": "address",
-        "internalType": "contract IBinHooks"
+        "name": "poolId",
+        "type": "bytes32",
+        "internalType": "PoolId"
+      },
+      {
+        "name": "minToken0",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "minToken1",
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
     "outputs": [],
@@ -979,6 +997,19 @@
     "inputs": [
       {
         "name": "newOwner",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "unban",
+    "inputs": [
+      {
+        "name": "_address",
         "type": "address",
         "internalType": "address"
       }
@@ -1001,13 +1032,37 @@
   },
   {
     "type": "event",
-    "name": "ImplementationChanged",
+    "name": "Data",
     "inputs": [
       {
-        "name": "newImplementation",
-        "type": "address",
-        "indexed": true,
-        "internalType": "contract IBinHooks"
+        "name": "token1inActive",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "token2inActive",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "binLiquidity",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalShares",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "activeId",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
       }
     ],
     "anonymous": false
@@ -1030,6 +1085,11 @@
       }
     ],
     "anonymous": false
+  },
+  {
+    "type": "error",
+    "name": "Banned",
+    "inputs": []
   },
   {
     "type": "error",

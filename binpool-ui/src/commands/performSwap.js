@@ -38,6 +38,9 @@ export const swapTokens = async (
 
         const args = [permitCall, encodedPlan];
         // Execute multicall
+
+        console.log(commands)
+        console.log(`["${permitCall}", "${encodedPlan}"]`);
         const tx = await universalRouterContract.execute(commands, args, deadline);
 
         // Wait for the transaction to be mined
