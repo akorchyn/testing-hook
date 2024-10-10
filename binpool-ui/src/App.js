@@ -19,7 +19,7 @@ import { addPermitAllowanceIfNeeded, singlePermit } from './commands/createPermi
 import { swapTokens } from './commands/performSwap';
 import BinPoolABI from './abi/BinPool.json';
 
-const ALLOWLIST_HOOK_ADDRESS = '0xe49CB7C0B8076B100Ea48F37EB817a222633B2B2';
+const PROXY_HOOK_ADDRESS = '0xEc3c86a0Fb60833A896c8e755aAAD865de8066C5';
 const BIN_POSITION_MANAGER_ADDRESS = '0xfB84c0D67f217f078E949d791b8d3081FE91Bca2';
 const PERMIT2_ADDRESS = '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768';
 const UNIVERSAL_ROUTER_ADDRESS = '0x30067B296Edf5BEbB1CB7b593898794DDF6ab7c5';
@@ -262,7 +262,7 @@ export default function AllowlistHookUI() {
         const userAddress = await signer.getAddress();
         setUserAddress(userAddress);
 
-        const allowlistHookContract = new ethers.Contract(ALLOWLIST_HOOK_ADDRESS, AllowlistHookABI.abi, signer);
+        const allowlistHookContract = new ethers.Contract(PROXY_HOOK_ADDRESS, AllowlistHookABI.abi, signer);
         setAllowlistHookContract(allowlistHookContract);
 
         const binPositionManagerContract = new ethers.Contract(BIN_POSITION_MANAGER_ADDRESS, BinPositionManagerABI, signer);
@@ -596,7 +596,7 @@ export default function AllowlistHookUI() {
       {/* Contract Info section */}
       <div style={{ background: '#f0f0f0', padding: '15px', borderRadius: '5px', marginBottom: '20px' }}>
         <h2 style={{ marginTop: 0 }}>Contract Info</h2>
-        <p><strong>AllowlistHook Address:</strong> {ALLOWLIST_HOOK_ADDRESS}</p>
+        <p><strong>AllowlistHook Address:</strong> {PROXY_HOOK_ADDRESS}</p>
         <p><strong>Owner:</strong> {owner}</p>
         <input
           type="text"
