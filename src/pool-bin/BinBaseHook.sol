@@ -54,12 +54,8 @@ abstract contract BinBaseHook is IBinHooks {
     /// @notice The address of the pool manager
     IBinPoolManager public immutable poolManager;
 
-    /// @notice The address of the vault
-    IVault public immutable vault;
-
     constructor(IBinPoolManager _poolManager) {
         poolManager = _poolManager;
-        vault = BinPoolManager(address(poolManager)).vault();
     }
 
     /// @dev Only the pool manager may call this function
@@ -70,7 +66,7 @@ abstract contract BinBaseHook is IBinHooks {
 
     /// @dev Only the vault may call this function
     modifier vaultOnly() {
-        if (msg.sender != address(vault)) revert NotVault();
+        if (msg.sender != address(poolManager.vault())) revert NotVault();
         _;
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "BusinessManager",
-  "address": "0x9d9be4f5aeaa9ce95d99bdf2eac6f9b9d493d37a",
+  "address": "0x6e55212e3e0cb16b6500a61d17ec8ed532eb3a71",
   "abi": [
     {
       "inputs": [
@@ -10,7 +10,7 @@
           "type": "bytes"
         }
       ],
-      "name": "_send_liquidity",
+      "name": "_send_to_binpool",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -435,6 +435,87 @@
     {
       "inputs": [
         {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            },
+            {
+              "internalType": "contract IPoolManager",
+              "name": "poolManager",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "parameters",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "key",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "int128",
+          "name": "",
+          "type": "int128"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeSwap",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        },
+        {
+          "internalType": "BeforeSwapDelta",
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "contract IBinPositionManager",
           "name": "_positionManager",
           "type": "address"
@@ -769,87 +850,33 @@
     {
       "inputs": [
         {
-          "internalType": "address",
-          "name": "",
+          "internalType": "Currency",
+          "name": "currency",
           "type": "address"
-        },
-        {
-          "components": [
-            {
-              "internalType": "Currency",
-              "name": "currency0",
-              "type": "address"
-            },
-            {
-              "internalType": "Currency",
-              "name": "currency1",
-              "type": "address"
-            },
-            {
-              "internalType": "contract IHooks",
-              "name": "hooks",
-              "type": "address"
-            },
-            {
-              "internalType": "contract IPoolManager",
-              "name": "poolManager",
-              "type": "address"
-            },
-            {
-              "internalType": "uint24",
-              "name": "fee",
-              "type": "uint24"
-            },
-            {
-              "internalType": "bytes32",
-              "name": "parameters",
-              "type": "bytes32"
-            }
-          ],
-          "internalType": "struct PoolKey",
-          "name": "key",
-          "type": "tuple"
-        },
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        },
-        {
-          "internalType": "int128",
-          "name": "",
-          "type": "int128"
-        },
-        {
-          "internalType": "bytes",
-          "name": "",
-          "type": "bytes"
         }
       ],
-      "name": "beforeSwap",
-      "outputs": [
+      "name": "DeltaNotNegative",
+      "type": "error"
+    },
+    {
+      "inputs": [
         {
-          "internalType": "bytes4",
-          "name": "",
-          "type": "bytes4"
-        },
-        {
-          "internalType": "BeforeSwapDelta",
-          "name": "",
-          "type": "int256"
-        },
-        {
-          "internalType": "uint24",
-          "name": "",
-          "type": "uint24"
+          "internalType": "Currency",
+          "name": "currency",
+          "type": "address"
         }
       ],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      "name": "DeltaNotPositive",
+      "type": "error"
     },
     {
       "inputs": [],
       "name": "HookNotImplemented",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "INTERNAL_ERROR_SameActiveId",
       "type": "error"
     },
     {
@@ -924,31 +951,31 @@
         {
           "indexed": false,
           "internalType": "uint256",
-          "name": "token1inActive",
+          "name": "reserveX",
           "type": "uint256"
         },
         {
           "indexed": false,
           "internalType": "uint256",
-          "name": "token2inActive",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "binLiquidity",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "totalShares",
+          "name": "reserveY",
           "type": "uint256"
         },
         {
           "indexed": false,
           "internalType": "uint256",
           "name": "activeId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "reservesInDesiredX",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "resrevesInDesiredY",
           "type": "uint256"
         }
       ],
@@ -1003,6 +1030,25 @@
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "swapForY",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "int128",
+          "name": "amount",
+          "type": "int128"
+        }
+      ],
+      "name": "Swap",
+      "type": "event"
     },
     {
       "inputs": [
@@ -1074,6 +1120,11 @@
       "outputs": [
         {
           "internalType": "uint256",
+          "name": "activeId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
           "name": "tokenX",
           "type": "uint256"
         },
@@ -1140,6 +1191,19 @@
     },
     {
       "inputs": [],
+      "name": "started",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "vault",
       "outputs": [
         {
@@ -1153,5 +1217,5 @@
     }
   ],
   "filePath": " - connect to localhost - /src/pool-bin/BusinessManager.sol",
-  "pinnedAt": 1728597259239
+  "pinnedAt": 1729181474259
 }

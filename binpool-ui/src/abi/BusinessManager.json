@@ -11,13 +11,18 @@
         "name": "_owner",
         "type": "address",
         "internalType": "address"
+      },
+      {
+        "name": "_permit2",
+        "type": "address",
+        "internalType": "contract IPermit2"
       }
     ],
     "stateMutability": "nonpayable"
   },
   {
     "type": "function",
-    "name": "_send_liquidity",
+    "name": "_send_to_binpool",
     "inputs": [
       {
         "name": "payload",
@@ -897,6 +902,11 @@
     ],
     "outputs": [
       {
+        "name": "activeId",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
         "name": "tokenX",
         "type": "uint256",
         "internalType": "uint256"
@@ -993,6 +1003,19 @@
   },
   {
     "type": "function",
+    "name": "started",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "transferOwnership",
     "inputs": [
       {
@@ -1035,31 +1058,31 @@
     "name": "Data",
     "inputs": [
       {
-        "name": "token1inActive",
+        "name": "reserveX",
         "type": "uint256",
         "indexed": false,
         "internalType": "uint256"
       },
       {
-        "name": "token2inActive",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      },
-      {
-        "name": "binLiquidity",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      },
-      {
-        "name": "totalShares",
+        "name": "reserveY",
         "type": "uint256",
         "indexed": false,
         "internalType": "uint256"
       },
       {
         "name": "activeId",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "reservesInDesiredX",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "resrevesInDesiredY",
         "type": "uint256",
         "indexed": false,
         "internalType": "uint256"
@@ -1087,13 +1110,59 @@
     "anonymous": false
   },
   {
+    "type": "event",
+    "name": "Swap",
+    "inputs": [
+      {
+        "name": "swapForY",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      },
+      {
+        "name": "amount",
+        "type": "int128",
+        "indexed": false,
+        "internalType": "int128"
+      }
+    ],
+    "anonymous": false
+  },
+  {
     "type": "error",
     "name": "Banned",
     "inputs": []
   },
   {
     "type": "error",
+    "name": "DeltaNotNegative",
+    "inputs": [
+      {
+        "name": "currency",
+        "type": "address",
+        "internalType": "Currency"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "DeltaNotPositive",
+    "inputs": [
+      {
+        "name": "currency",
+        "type": "address",
+        "internalType": "Currency"
+      }
+    ]
+  },
+  {
+    "type": "error",
     "name": "HookNotImplemented",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "INTERNAL_ERROR_SameActiveId",
     "inputs": []
   },
   {

@@ -36,12 +36,16 @@ const calculatePrice = (id, token0, token1) => {
 
 const calculateBinFromPrice = (price, token0, token1) => {
   if (!price || isNaN(price) || price <= 0) return null;
-  const ID_BASE = 8388608;
+  const REAL_ID_SHIFT = 8388608; // This is equivalent to 2^23
+  const BIN_STEP = 1; // Assuming BIN_STEP is 1, adjust if different
 
   const decimalDifference = (token1?.decimals ?? 0) - (token0?.decimals ?? 0);
-
   const adjustedPrice = price * Math.pow(10, decimalDifference);
-  const binId = Math.round(Math.log(adjustedPrice) / Math.log(1 + BIN_STEP / 10000) + ID_BASE);
+
+  const base = Math.log(1 + BIN_STEP / 10000) / Math.log(2);
+  const realId = Math.log(adjustedPrice) / Math.log(2) / base;
+
+  const binId = Math.round(REAL_ID_SHIFT + realId);
 
   return binId;
 }
